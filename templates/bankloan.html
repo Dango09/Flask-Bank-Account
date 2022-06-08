@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+This is the bank loan page
+<br>
+<hr>
+<div class="container">
+  <form action = '/bankloan' method="post">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Amount loan:</label>
+      <input type="text" name="loanamount" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <br>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Rate:</label>
+      <input type="text" name="rate" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <br>
+
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Period(Months):</label>
+      <input type="text" name="period" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <br>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
+{% endblock %}

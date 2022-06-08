@@ -4,6 +4,7 @@ from flask.globals import request
 from functions import Bank
 
 app = Flask(__name__)
+jy = Bank()
 
 @app.route('/')
 def index():
@@ -13,7 +14,9 @@ def index():
 def deposit():
     if request.method == 'POST':
         amount = request.form['deposit']
-        Bank(deposit)
+        print(amount)
+        add = jy.deposit(amount)
+        print(add)
         return render_template('deposit.html')
         # return "The language is".format(amount)
     else:
@@ -23,9 +26,25 @@ def deposit():
 def withdraw():
     if request.method == 'POST':
         amount = request.form['withdraw']
+        print(amount)
+        reduce = jy.withdraw(amount)
+        print(reduce)
         return render_template('withdraw.html')
     else:
         return render_template('withdraw.html')
+
+@app.route('/bankloan', methods=['GET', 'POST'])
+def bankloan():
+    if request.method == 'POST':
+        req = request.form
+        loanamount = req.get("loanamount")
+        rate = req.get("rate")
+        period = req.get("period")
+        interest = jy.bankloan(loanamount,rate,period)
+        print(interest)
+        return render_template('bankloan.html')
+    else:
+        return render_template('bankloan.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
